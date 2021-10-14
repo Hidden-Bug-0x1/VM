@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"vector": "c",
+		"array": "c",
+		"hash_map": "c",
+		"hash_set": "c",
+		"string_view": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}
