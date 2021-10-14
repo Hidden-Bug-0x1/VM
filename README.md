@@ -1,5 +1,6 @@
 # VM
 Building a "virtual machine"
+tutorial link: [https://felix.engineer/blogs/virtual-machine-in-c]
 
 ## Instructions Available:
   * PSH [INT] - pushes [INT] to the stack
