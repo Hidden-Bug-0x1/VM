@@ -33,6 +33,15 @@ int vector_pop(vector* vect) {
   return val;
 }
 
+int vector_pop_back(vector *vect) {
+    if (vect->size == 0) return -1;
+    
+    int val = vect->data[vect->size-1];
+    free(&vect->data[vect->size-1]);
+    vect->size--;
+    return val;
+}
+
 int vector_add(vector* vect, int val) {
   if (vect->size + 1 <= vect->max_size)
   {
