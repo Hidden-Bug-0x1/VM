@@ -8,4 +8,5 @@ tutorial link: [https://felix.engineer/blogs/virtual-machine-in-c]
   * ADD - adds top two values on stack
   * POP - gets the top value and prints it out
   * SET [REGISTER] [INT] - sets the [REGISTER] to [INT]
+  * PRT - prints out the top of the stack
   * HLT - stops the program

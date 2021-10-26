@@ -2,3 +2,5 @@ bin/*
 bin
 objs
 objs/*
+.vscode
+.theia
