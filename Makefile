@@ -1,6 +1,6 @@
 # Set project directory one level above of Makefile directory. $(CURDIR) is a GNU make variable containing the path to the current working directory
 PROJDIR := $(realpath $(CURDIR)/)
-SOURCEDIR := $(PROJDIR)/src
+SOURCEDIR := $(PROJDIR)
 BUILDDIR := $(PROJDIR)/objs
 BINDIR := $(PROJDIR)/bin
 # Name of the final executable
@@ -10,7 +10,7 @@ TARGET = vm
 VERBOSE = TRUE
 
 # Create the list of directories
-DIRS = utils
+DIRS = src src/utils
 SOURCEDIRS = $(foreach dir, $(DIRS), $(addprefix $(SOURCEDIR)/, $(dir)))
 TARGETDIRS = $(foreach dir, $(DIRS), $(addprefix $(BUILDDIR)/, $(dir)))
 
@@ -54,6 +54,7 @@ PSEP = $(strip $(SEP))
 # Hide or not the calls depending of VERBOSE
 ifeq ($(VERBOSE),TRUE)
 		HIDE =  
+		CXXFLAGS +=-fsanitize=address
 else
 		HIDE = @
 endif
@@ -73,7 +74,7 @@ $(TARGET): $(OBJS)
 		@echo $(SOURCES)
 
 		$(HIDE)echo Linking $@
-		$(HIDE)$(CC) $(CXXFLAGS) $(OBJS) $(SOURCEDIR)/main.c -o $(BINDIR)/$(TARGET)
+		$(HIDE)$(CC) $(CXXFLAGS) $(OBJS) -o $(BINDIR)/$(TARGET)
 
 # Include dependencies
 -include $(DEPS)
@@ -89,6 +90,10 @@ clean:
 		@$(RMDIR) $(subst /,$(PSEP),$(TARGETDIRS)) $(ERRIGNORE)
 		@$(RM) $(BINDIR)/$(TARGET) $(ERRIGNORE)
 		@echo Cleaning done! 
+
+test:
+	@echo $(SOURCEDIRS)
+	@echo $(SOURCES)
 
 run:
 	@$(BINDIR)/./$(TARGET)

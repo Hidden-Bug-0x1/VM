@@ -5,7 +5,7 @@
         "type": "gdb",
         "name": "Debug current algorithm",
         "request": "launch",
-        "program": "${fileDirname}/bin.out"
+        "program": "${fileDirname}/bin/vm"
     }
 ]
 }
